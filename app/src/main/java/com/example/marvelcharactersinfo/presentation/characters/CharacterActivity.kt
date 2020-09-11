@@ -1,0 +1,41 @@
+package com.example.marvelcharactersinfo.presentation.characters
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.marvelcharactersinfo.R
+import com.example.marvelcharactersinfo.data.model.Character
+import kotlinx.android.synthetic.main.activity_personagens.*
+
+class CharacterActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_personagens)
+
+        //Pegando a String para nomear a Main activity
+        toolbarMain.title = getString(R.string.app_name)
+        setSupportActionBar(toolbarMain)
+
+        //Instanciando a ViewModel
+        val viewModel : CharacterViewModel = ViewModelProviders.of(this).get(CharacterViewModel::class.java)
+
+        viewModel.characterLiveData.observe(this, Observer {
+            it?.let { personagem ->
+                with(recyclerTitulo){
+                    layoutManager = LinearLayoutManager(this@CharacterActivity, RecyclerView.VERTICAL, false)
+                    setHasFixedSize(true)
+                    adapter = CharacterAdapter( personagem )
+                }
+            }
+        })
+
+        viewModel.getCharacter()
+    }
+
+
+}
