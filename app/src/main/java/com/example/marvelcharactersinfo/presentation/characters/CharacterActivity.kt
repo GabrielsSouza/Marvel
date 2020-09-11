@@ -2,6 +2,7 @@ package com.example.marvelcharactersinfo.presentation.characters
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
@@ -9,6 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.marvelcharactersinfo.R
 import com.example.marvelcharactersinfo.data.model.Character
+import com.example.marvelcharactersinfo.data.response.HeroDetailsResponse
+import com.example.marvelcharactersinfo.presentation.description.DescriptionHeroesActivity
 import kotlinx.android.synthetic.main.activity_personagens.*
 
 class CharacterActivity : AppCompatActivity() {
@@ -25,11 +28,16 @@ class CharacterActivity : AppCompatActivity() {
         val viewModel : CharacterViewModel = ViewModelProviders.of(this).get(CharacterViewModel::class.java)
 
         viewModel.characterLiveData.observe(this, Observer {
-            it?.let {
+            it?.let {HeroDetailsResponse ->
                 with(recyclerTitulo){
                     layoutManager = LinearLayoutManager(this@CharacterActivity, RecyclerView.VERTICAL, false)
                     setHasFixedSize(true)
-                    adapter = CharacterAdapter( it )
+                    adapter = CharacterAdapter(HeroDetailsResponse) {HeroDetailsResponse ->
+                        val intent = DescriptionHeroesActivity.getStartIntent(this@CharacterActivity, HeroDetailsResponse.name, HeroDetailsResponse.description,
+                            HeroDetailsResponse.thumbnail.path, HeroDetailsResponse.thumbnail.extension)
+                        this@CharacterActivity.startActivity(intent)
+                    }
+
                 }
             }
         })

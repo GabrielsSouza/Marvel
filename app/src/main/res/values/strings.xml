@@ -3,4 +3,8 @@
 
     <!-- Nome do app (Main activity) -->
     <string name="name_charactersApp">Marvel Characters</string>
+
+    <!-- String Detalhes do Heroi -->
+    <string name="name_hero">Herói</string>
+    <string name="description_hero">Descrição do Herói</string>
 </resources>

@@ -1,10 +1,8 @@
 package com.example.marvelcharactersinfo.data
 
-import android.net.wifi.aware.PublishConfig
-
-import com.example.marvelcharactersinfo.HASH
-import com.example.marvelcharactersinfo.PUBLIC_KEY
 import com.example.marvelcharactersinfo.TS
+import com.example.marvelcharactersinfo.PUBLIC_KEY
+import com.example.marvelcharactersinfo.HASH
 import com.example.marvelcharactersinfo.data.response.CharacterResponse
 import com.example.marvelcharactersinfo.md5
 import retrofit2.Call
@@ -18,7 +16,7 @@ interface MarvelService {
     @GET("characters")
     fun getCharacter(
         @Query("ts") ts: String = TS,
-        @Query("api_key") apiKey: String = PUBLIC_KEY,
+        @Query("apikey") apiKey: String = PUBLIC_KEY,
         @Query("hash") hash: String = HASH.md5()
     ): Call<CharacterResponse>
 }
