@@ -10,6 +10,6 @@ data class HeroDetailsResponse(
     @Json (name = "description")
     val description : String,
     @Json (name = "thumbnail")
-    val thumbnail : String
+    val thumbnail : Thumbnail
 
 )

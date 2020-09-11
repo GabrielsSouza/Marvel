@@ -1,5 +1,7 @@
 package com.example.marvelcharactersinfo.presentation.characters
 
+import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.marvelcharactersinfo.data.APIService
@@ -13,34 +15,27 @@ import javax.security.auth.callback.Callback
 
 class CharacterViewModel : ViewModel() {
 
-    val characterLiveData: MutableLiveData<List<Character>> = MutableLiveData()
+    val _characterLiveData: MutableLiveData<List<HeroDetailsResponse>> = MutableLiveData()
+    val characterLiveData : LiveData<List<HeroDetailsResponse>> = _characterLiveData
 
     fun getCharacter (){
-        //characterLiveData.value = getCharacter()
         APIService.service.getCharacter().enqueue(object: retrofit2.Callback<CharacterResponse>{
-            override fun onFailure(call: Call<CharacterResponse>, t: Throwable) {
-
-            }
 
             override fun onResponse(call: Call<CharacterResponse>, response: Response<CharacterResponse>) {
                 if(response.isSuccessful){
                     val heroes: MutableList<Character> = mutableListOf()
 
-                    response.body()?.let { characterResponse ->
-                        for (results in characterResponse.data.results){
-                            val character : Character = Character(
-                                name = results.name,
-                                description = results.description,
-                                imagehero = results.thumbnail,
-                                extension = results.thumbnail
-                            )
-                            heroes.add(character)
-                        }
+                    response.body()?.let {
+                        _characterLiveData.value = it.data.results
                     }
 
-                    characterLiveData.value = heroes
                 }
             }
+
+            override fun onFailure(call: Call<CharacterResponse>, t: Throwable) {
+
+            }
+
 
         })
     }

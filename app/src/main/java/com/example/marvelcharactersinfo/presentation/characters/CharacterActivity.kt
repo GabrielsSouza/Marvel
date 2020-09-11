@@ -25,11 +25,11 @@ class CharacterActivity : AppCompatActivity() {
         val viewModel : CharacterViewModel = ViewModelProviders.of(this).get(CharacterViewModel::class.java)
 
         viewModel.characterLiveData.observe(this, Observer {
-            it?.let { personagem ->
+            it?.let {
                 with(recyclerTitulo){
                     layoutManager = LinearLayoutManager(this@CharacterActivity, RecyclerView.VERTICAL, false)
                     setHasFixedSize(true)
-                    adapter = CharacterAdapter( personagem )
+                    adapter = CharacterAdapter( it )
                 }
             }
         })
