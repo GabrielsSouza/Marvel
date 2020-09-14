@@ -24,3 +24,4 @@ Fontes: https://sites.google.com/site/amignon/tepoo/ciclo-de-vida-da-activity#:~
         https://www.thiengo.com.br/ciclo-de-vida-e-otimizacao-de-fragments-no-android
         https://www.it-swarm.dev/pt/android/qual-e-diferenca-entre-fragment-e-fragmentactivity/1067294840/#:~:text=A%20Fragment%20%C3%A9%20uma%20se%C3%A7%C3%A3o,o%20Activity%20est%C3%A1%20sendo%20executado.
         https://pt.stackoverflow.com/questions/17483/qual-a-diferen%C3%A7a-entre-desenhar-na-activity-e-no-fragment
+        https://pt.stackoverflow.com/questions/21539/o-que-%C3%A9-mvp-e-mvvm#:~:text=No%20caso%20do%20MVVM%2C%20o,como%20um%20observador%20de%20ambas.
