@@ -15,6 +15,7 @@ interface MarvelService {
     //Mapeamento de endPoints
     @GET("characters")
     fun getCharacter(
+        @Query("limit") limit: Int = 100,
         @Query("ts") ts: String = TS,
         @Query("apikey") apiKey: String = PUBLIC_KEY,
         @Query("hash") hash: String = HASH.md5()

@@ -1,6 +1,5 @@
 package com.example.marvelcharactersinfo.presentation.characters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,7 +36,7 @@ class CharacterAdapter(private val character : List<HeroDetailsResponse>,
 
         fun bindView(character: HeroDetailsResponse){
             titulo.text = character.name
-            val url = "${character.thumbnail.path}/standard_medium.${character.thumbnail.extension}"
+            val url = "${character.thumbnail.path}/standard_large.${character.thumbnail.extension}"
                 .split(":")
                 Picasso.get().load("https:" + url[1]).into(itemView.imageFilme)
 

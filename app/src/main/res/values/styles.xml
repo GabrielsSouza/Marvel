@@ -5,7 +5,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <!-- Mudar a cor do background do app -->
-        <item name="android:colorBackground">@android:color/white</item>
+        <item name="android:colorBackground">@android:color/background_dark</item>
     </style>
 
 </resources>
