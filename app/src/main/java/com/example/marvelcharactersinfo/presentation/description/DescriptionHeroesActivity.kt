@@ -8,8 +8,6 @@ import com.example.marvelcharactersinfo.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_description_heroes.*
 import kotlinx.android.synthetic.main.activity_description_heroes.toolbarMain
-import kotlinx.android.synthetic.main.activity_personagens.*
-import java.security.AccessControlContext
 
 class DescriptionHeroesActivity : AppCompatActivity() {
 
@@ -27,6 +25,13 @@ class DescriptionHeroesActivity : AppCompatActivity() {
 
         textNameHero.text = name
         textDescription.text = description
+
+        if(description.isNullOrEmpty()) {
+            textDescription.text = "Biografia ainda sob estudos!"
+        }else{
+            textDescription.text = description
+        }
+
 
         var url = "$path/standard_large.${extension}".split(":")
         Picasso.get().load("https:"+url[1]).into(imageDescription)

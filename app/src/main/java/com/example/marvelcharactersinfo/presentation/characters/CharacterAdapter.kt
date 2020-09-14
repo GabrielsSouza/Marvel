@@ -22,7 +22,6 @@ class CharacterAdapter(private val character : List<HeroDetailsResponse>,
     override fun getItemCount() = character.count()
 
 
-
     override fun onBindViewHolder(holder: CharacterViewHolder, position: Int) {
         holder.bindView(character[position])
     }
@@ -30,7 +29,6 @@ class CharacterAdapter(private val character : List<HeroDetailsResponse>,
     class CharacterViewHolder(
         view: View,
         private val onItemClickListener: (hero_description: HeroDetailsResponse) -> Unit) : RecyclerView.ViewHolder(view) {
-
 
         private val titulo = view.textTitulo
 
@@ -43,7 +41,6 @@ class CharacterAdapter(private val character : List<HeroDetailsResponse>,
             itemView.setOnClickListener {
                 onItemClickListener.invoke(character)
             }
-
         }
     }
 }
