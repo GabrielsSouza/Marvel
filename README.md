@@ -1,17 +1,18 @@
-###Introdução
+### Introdução
 
 O projeto tem como objetivo listar e mostrar informações acerca dos Herois da Marvel.
 
-###Instalação
+### Instalação
 Para que o aplicativo funcione normalmente, faça o clone do repositório e adicione as seguintes dependências ao seu código:
 
 Link para clone do repositório.
 '''
+
 $ git clone https://github.com/GabrielsSouza/Marvel.git
 
 
 Dependências necessárias para o funcionamento regular do app
-'''
+
 implementation 'com.android.support:recyclerview-v7:30.0.0'
 
     implementation 'android.arch.lifecycle:extensions:1.1.1'
